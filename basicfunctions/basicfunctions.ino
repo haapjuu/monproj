@@ -17,10 +17,10 @@ char keymap[numRows][numCols]=
 byte rowPins[numRows] = {9,8,7,6};
 byte colPins[numCols]= {5,4,3,2};
 
-Keypad myKeypad= Keypad(makeKeymap(keymap), rowPins, colPins, numRows, numCols);
+Keypad myKeypad = Keypad(makeKeymap(keymap), rowPins, colPins, numRows, numCols);
 
 void setup() {
-  myServo.attach(9);
+  myServo.attach(10);
   Serial.begin(9600);
   pinMode (switchPin, INPUT);
 }
@@ -31,12 +31,12 @@ void loop() {
   if (keypressed != NO_KEY)
   {
   Serial.println(keypressed);
-  angle = 180;
+  angle = 0;
 
   myServo.write(angle);
   delay(15);
 } else {
-  angle = 0;
+  angle = 180;
 }
 
 }

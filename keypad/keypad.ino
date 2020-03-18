@@ -3,10 +3,10 @@
 const byte numRows= 4;
 const byte numCols= 4;
 
-char keymap[numRows][numCols]= 
+char keymap[numRows][numCols]=
 {
-{'1', '2', '3', 'A'}, 
-{'4', '5', '6', 'B'}, 
+{'1', '2', '3', 'A'},
+{'4', '5', '6', 'B'},
 {'7', '8', '9', 'C'},
 {'*', '0', '#', 'D'}
 };

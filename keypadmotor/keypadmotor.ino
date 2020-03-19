@@ -7,7 +7,6 @@ Servo myServo;
 int angle;
 int switchState = 0;
 int switchPin = 2;
-boolean locked = 0;
 
 char keymap[numRows][numCols] =
 {
@@ -30,7 +29,18 @@ void setup() {
 void loop() {
 
   char keypressed = myKeypad.getKey();
-
+  if (keypressed != NO_KEY)
+  {
+    Serial.println(keypressed);
+    angle = 0;
+    myServo.write(angle);
+    delay(15);
+    Serial.println("Turning servo forwards");
+  } else {
+    angle = 180;
+    myServo.write(angle);
+    delay(15);
+    Serial.println("Turning servo backwards");
   }
 
 

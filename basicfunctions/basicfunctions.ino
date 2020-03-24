@@ -45,12 +45,12 @@ void loop() {
       ++currentPosition;
       if (currentPosition == 4)
       {
-        //To add: Unlock method
+        //Todo: Unlock method
         Serial.println("Door unlocked");
         currentPosition = 0;
       }
     } //else {
-      //Serial.println("Invalid code");
+      //Serial.println("Invalid code");   
       //delay(1000);
       //Serial.println("Resetting");
       //delay(1000);

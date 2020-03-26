@@ -24,22 +24,26 @@ void setup() {
 }
 void loop() {
   char key = keypad.getKey();
+
   if (key != NO_KEY){
     Serial.println(key);
   }
+
   if (key == '*') {
-    position = 0;
-    setLocked(true);
-    Serial.println("Locking");
+      position = 0;
+      setLocked(true);
   }
+
   if (key == password[position]) {
     position ++;
   }
+
   if (position == 4) {
     setLocked(false);
   }
   delay(100);
 }
+
 void setLocked(int locked) {
   if (locked) {
     servo_Motor.write(0);

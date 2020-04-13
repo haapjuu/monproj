@@ -38,3 +38,4 @@ while(1):
         if (n >= 32 and n <= 126):
             string += chr(n)
     print("Out received message decodes to: {}".format(string))
+    time.sleep(1)

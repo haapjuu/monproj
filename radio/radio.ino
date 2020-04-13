@@ -4,7 +4,7 @@
 
 // ce, csn pins
 RF24 radio(9, 10);
-const byte address[6] = "00001";
+const byte address = 0xE0E0F1F1E0LL;
 
 void setup(void){
   Serial.begin(9600);

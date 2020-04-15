@@ -13,7 +13,7 @@ radio.begin(0, 17)
 radio.setPayloadSize(32)
 radio.setChannel(0x76)
 radio.setDataRate(NRF24.BR_1MBPS)
-radio.setPALevel(NRF24.PA_MAX)
+radio.setPALevel(NRF24.PA_MIN)
 
 radio.setAutoAck(True)
 radio.enableDynamicPayloads()
@@ -38,4 +38,4 @@ while(1):
         if (n >= 32 and n <= 126):
             string += chr(n)
     print("Out received message decodes to: {}".format(string))
-    #time.sleep(1)
+    time.sleep(1)

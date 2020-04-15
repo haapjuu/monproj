@@ -11,7 +11,7 @@ radio = NRF24(GPIO, spidev.SpiDev())
 radio.begin(0, 17)
 
 radio.setPayloadSize(32)
-radio.setChannel(0x76)
+radio.setChannel(0x74)
 radio.setDataRate(NRF24.BR_1MBPS)
 radio.setPALevel(NRF24.PA_MIN)
 
@@ -34,7 +34,6 @@ while True:
     print("Translating the receivedMessage into unicode characters")
     string = ""
     for n in receivedMessage:
-        # Decode into standard unicode set
         if (n >= 32 and n <= 126):
             string += chr(n)
     print("Out received message decodes to: {}".format(string))

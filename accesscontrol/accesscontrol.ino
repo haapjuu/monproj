@@ -50,6 +50,8 @@ void loop() {
       setLocked(true);
       const char lockedmessage[] = "Locked";
       radio.write(&lockedmessage, sizeof(lockedmessage));
+      radio.write(&lockedmessage, sizeof(lockedmessage));
+      radio.write(&lockedmessage, sizeof(lockedmessage));
   }
 
   if (key == password[position]) {
@@ -60,17 +62,19 @@ void loop() {
     setLocked(false);
     const char unlockedmessage[] = "Unlocked";
     radio.write(&unlockedmessage, sizeof(unlockedmessage));
+    radio.write(&unlockedmessage, sizeof(unlockedmessage));
+    radio.write(&unlockedmessage, sizeof(unlockedmessage));
   }
   delay(100);
 }
 
 void setLocked(int locked) {
   if (locked) {
-    servo_Motor.write(0);
+    servo_Motor.write(10);
     Serial.println("Locking");
   }
   else {
-    servo_Motor.write(90);
+    servo_Motor.write(170);
     Serial.println("Unlocking");
   }
 }

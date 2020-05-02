@@ -7,18 +7,18 @@ Servo servo_Motor;
 const char* password = "2222";
 int position = 0;
 const byte ROWS = 4;
-const byte COLS = 4;
+const byte COLS = 3;
 RF24 radio(9, 10);
 
 char keys[ROWS][COLS] = {
-  {'1', '2', '3', 'A'},
-  {'4', '5', '6', 'B'},
-  {'7', '8', '9', 'C'},
-  {'*', '0', '#', 'D'}
+  {'1', '2', '3'},
+  {'4', '5', '6'},
+  {'7', '8', '9'},
+  {'*', '0', '#'}
 };
 
-byte rowPins[ROWS] = {7, 6, 5, 4};
-byte colPins[COLS] = {3, 2, 1, 0};
+byte rowPins[ROWS] = {8, 7, 6, 5};
+byte colPins[COLS] = {4, 3, 2};
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
 
@@ -28,7 +28,7 @@ void setup() {
   setLocked(true);
 
   radio.begin();
-  radio.setPALevel(RF24_PA_MAX);
+  radio.setPALevel(RF24_PA_MIN);
   radio.setChannel(0x74);
   radio.openWritingPipe(0xF0f0f0f0E1LL);
   radio.enableDynamicPayloads();
@@ -50,8 +50,6 @@ void loop() {
       setLocked(true);
       const char lockedmessage[] = "Locked";
       radio.write(&lockedmessage, sizeof(lockedmessage));
-      radio.write(&lockedmessage, sizeof(lockedmessage));
-      radio.write(&lockedmessage, sizeof(lockedmessage));
   }
 
   if (key == password[position]) {
@@ -61,8 +59,6 @@ void loop() {
   if (position == 4) {
     setLocked(false);
     const char unlockedmessage[] = "Unlocked";
-    radio.write(&unlockedmessage, sizeof(unlockedmessage));
-    radio.write(&unlockedmessage, sizeof(unlockedmessage));
     radio.write(&unlockedmessage, sizeof(unlockedmessage));
   }
   delay(100);

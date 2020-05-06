@@ -24,7 +24,6 @@ radio.openReadingPipe(1, pipes[1])
 radio.printDetails()
 radio.startListening()
 
-f= open("logs.txt", "a+")
 now = datetime.datetime.now()
 
 while True:
@@ -41,6 +40,6 @@ while True:
         if (n >= 32 and n <= 126):
             string += chr(n)
     print("Our received message decodes to: {}".format(string))
+    f= open("logs.txt", "a+")
     f.write(now.strftime("%Y-%b-%d %H:%M")+" "+"{}".format(string)+"\n")
-    
-
+    f.close()

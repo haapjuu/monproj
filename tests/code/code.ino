@@ -39,7 +39,6 @@ void setup() {
 }
 
 void loop() {
-  
   A:
   i = 0;
   tempPassword = "";
@@ -52,7 +51,7 @@ void loop() {
   
   while (i < 4) {
     
-    if(key != NO_KEY){
+    if (key != NO_KEY){
       char key = keypad.getKey();
       Serial.println(key);
       tempPassword += key;

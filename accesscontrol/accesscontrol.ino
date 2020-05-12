@@ -7,8 +7,9 @@ const byte COLS = 3;
 
 int RelayControlPin = 2;
 
-const char* password = "2222";
-int position = 0;
+String Password = "1234";
+String tempPassword = "";
+int i = 0;
 
 RF24 radio(9, 10);
 
@@ -38,25 +39,43 @@ void setup() {
 }
 
 void loop() {
+  A:
+  i = 0;
+  tempPassword = "";
   char key = keypad.getKey();
 
-  if (key != NO_KEY) {
+    if (key != NO_KEY) {
     Serial.println(key);
   }
 
-  if (key == password[position]) {
-    position ++;
 
+  while (i < 4) {
+
+    if (key != NO_KEY){
+      char key = keypad.getKey();
+      Serial.println(key);
+      tempPassword += key;
+      i++;
+
+     // if(tempPassword.startsWith("1",1)){
+       // Serial.println("startwith");
+        //}
+
+    }
   }
-
-
-
-  if (position == 4) {
+  if (Password == tempPassword){
     setLocked(false);
     delay(5000);
     setLocked(true);
-    position = 0;
+    goto A;
+  } else {
+    goto A;
   }
+  if (i == 4 && Password != tempPassword){
+    goto A;
+    Serial.println("Incorrect code, resetting");
+  }
+
 
 
   delay(100);

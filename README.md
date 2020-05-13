@@ -1,7 +1,10 @@
 # monproj
 Monialaprojekti PRO4TN004-3005
+
+
 A simple Arduino and Raspberry Pi based access control system built for a course at Haaga-Helia University of Applied Sciences.
-The aim of the project was to create a system where the Arduino controls a solenoid lock with a keypad and then transmits a signal using a nrf24L01+ transmitter to a Raspberry Pi which logs the event and publishes the log on a webserver.
+
+The goal of this project was to create a simple access control system between Arduino Uno and Raspberry Pi. The system consists of Arduino Uno, Raspberry Pi 3B+, 9-12V DC solenoid lock, 3x3 membrane keypad and 2x NRF24L01 radio transceiver modules. The lock is controlled by inputting a correct PIN code using the keypad connected to the Arduino. The Raspberry Pi acts as a backend for this system and it is used for storing and viewing the logs based on the solenoid lock activity.
 
 ## Project Team
 - Juuso Haapaniemi - Project manager
@@ -246,6 +249,7 @@ self.ce_pin = ce_pin
 ```
 
 Code that was used to test sending data over to Raspberry.
+
 <details>
   <summary>radio.ino</summary>
   <br>
@@ -277,7 +281,10 @@ void loop(void){
   delay(1000);
 }
 ```
-</details>
+</details>  
+
+![schematic](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/misc%20images/schematic.png)
+
 
 Early code that was used to test receiving data from Arduino.
 
@@ -477,7 +484,7 @@ while True:
 ```
 </details>
 
-This code is ran on Raspberry and it is used to listen for the "Unlocked" message from Arduino. Once this message is received, it is added into 'logs.txt' with the time and date. At this point Raspberry then sends an acknowledgement payload back to Arduino to confirm that the message has been received. PHP and Apache are then used to read and display the contents of the 'logs.txt' by creating a static website.
+This code is ran on the Raspberry Pi and it is used to listen for the "Unlocked" message from Arduino. Once this message is received, it is added into 'logs.txt' with the time and date. At this point Raspberry then sends an acknowledgement payload back to Arduino to confirm that the message has been received. PHP and Apache are then used to read and display the contents of the 'logs.txt' by creating a static website.
 
 ![logs](https://github.com/haapjuu/monproj/blob/master/tests/misc%20images/logs.png)
 

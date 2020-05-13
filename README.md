@@ -191,3 +191,87 @@ sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp  
 sudo ufw enable
 ``
+
+## 1.5 Radio Transceiver Module
+Testing the communication between Arduino and Raspberry PI using radio transceiver modules.
+Testing and actual finished project uses BLavery's Python2/3 lib_nrf24 library for NRF24L01+ Transceivers with an addional fix line below.
+`self.spidev.max_speed_hz=4000000`
+
+This extra line is added into lib_nrf24.py line 373 between
+```
+self.spidev.open(0, csn_pin)
+self.ce_pin = ce_pin
+```
+
+
+radio.ino code that was used to test sending data over to Raspberry.
+```
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+
+RF24 radio(7, 8); // CE, CSN
+const byte address[6] = "00001";
+
+void setup(void){
+  Serial.begin(9600);
+  radio.begin();
+  radio.setPALevel(RF24_PA_MIN);
+  radio.setChannel(0x76);
+  radio.openWritingPipe(address);
+  radio.enableDynamicPayloads();
+  radio.powerUp();
+  radio.stopListening();
+}
+
+void loop(void){
+  Serial.println("Attempting to send data");
+  const char text[] = "Hello World";
+  radio.write(&text, sizeof(text));
+  Serial.println("Sending message Hello World");
+  delay(1000);
+}
+```
+ReceiveArduino.py code that was used to test receiving data from Arduino.
+```
+import RPi.GPIO as GPIO
+from lib_nrf24 import NRF24
+import time
+import spidev
+
+GPIO.setmode(GPIO.BCM)
+
+pipes = [[0xE8, 0xE8, 0xF0, 0xF0, 0xE1], [0xF0, 0xF0, 0xF0, 0xF0, 0xE1]]
+
+radio = NRF24(GPIO, spidev.SpiDev())
+radio.begin(0, 17)
+
+radio.setPayloadSize(32)
+radio.setChannel(0x76)
+radio.setDataRate(NRF24.BR_1MBPS)
+radio.setPALevel(NRF24.PA_MIN)
+
+radio.setAutoAck(True)
+radio.enableDynamicPayloads()
+radio.enableAckPayload()
+
+radio.openReadingPipe(1, pipes[1])
+radio.printDetails()
+radio.startListening()
+
+while(1):
+    # ackPL = [1]
+    while not radio.available(0):
+        time.sleep(1 / 100)
+    receivedMessage = []
+    radio.read(receivedMessage, radio.getDynamicPayloadSize())
+    print("Received: {}".format(receivedMessage))
+
+    print("Translating the receivedMessage into unicode characters")
+    string = ""
+    for n in receivedMessage:
+        # Decode into standard unicode set
+        if (n >= 32 and n <= 126):
+            string += chr(n)
+    print("Out received message decodes to: {}".format(string))
+```

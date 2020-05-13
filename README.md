@@ -53,9 +53,12 @@ We changed the servo to another one, which worked, but later on we ended up usin
 
 ## 1.2 Keypad
 Next up: testing out our keypad.
-Using the file keypad.ino:
-```
 
+<details>
+  <summary>keypad.ino</summary>
+  <br>
+  
+  ```
 #include <Keypad.h>
 
 const byte numRows = 4;
@@ -87,8 +90,10 @@ void loop()
     Serial.println(keypressed);
   }
 }
-
 ```
+</details>
+
+
 In this example we used all 4x4 keys available on the keypad.
 Later on we realized that our Arduino Uno did not have enough DigitalPins, so we ended up using only 3x3 keys.
 This will be demonstrated later on.

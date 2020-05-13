@@ -475,7 +475,7 @@ while True:
 ```
 </details>
 
-This code is ran on Raspberry and it is used to listen for the "Unlocked" message from Arduino. Once this message is received, it is added into 'logs.txt' with the time and date. PHP and Apache are then used to read and display the contents of the 'logs.txt' by creating a static website.
+This code is ran on Raspberry and it is used to listen for the "Unlocked" message from Arduino. Once this message is received, it is added into 'logs.txt' with the time and date. At this point Raspberry then sends an acknowledgement payload back to Arduino to confirm that the message has been received. PHP and Apache are then used to read and display the contents of the 'logs.txt' by creating a static website.
 
 ![logs](https://github.com/haapjuu/monproj/blob/master/tests/misc%20images/logs.png)
 
@@ -599,6 +599,6 @@ void setLocked(int locked) {
 </details>
 
 
-This code checks the input PIN code and unlocks the solenoid lock once the correct code has been submitted. Once the lock is powered on to unlock it, an "Unlocked" message will be sent to Raspberry via the radio transceiver connected to Arduino. The lock is then automatically locked after 5 seconds by powering it down.
+This code checks the input PIN code and unlocks the solenoid lock once the correct code has been submitted. If the PIN code input is wrong, the code is "reset" and the PIN code input buffer is cleared. Once the lock is powered on to unlock it, an "Unlocked" message will be sent to Raspberry via the radio transceiver connected to Arduino. The lock is then automatically locked after 5 seconds by powering it down.
 
 

@@ -98,6 +98,8 @@ In this example we used all 4x4 keys available on the keypad.
 Later on we realized that our Arduino Uno did not have enough DigitalPins, so we ended up using only 3x3 keys.
 This will be demonstrated later on.
 
+![schematic2](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/keypad/schematic.png)
+
 ## 1.3 Keypad & Servo working together
 Moving the servo using our keypad.
 Created also our first iteration for a system using PIN code to unlock the door.

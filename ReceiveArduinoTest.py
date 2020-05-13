@@ -27,7 +27,7 @@ radio.startListening()
 now = datetime.datetime.now()
 
 while True:
-    #ackPL = [1]
+    ackPL = [1]
     while not radio.available(0):
         time.sleep(0.01)
 
@@ -41,8 +41,8 @@ while True:
         if (n >= 32 and n <= 126):
             string += chr(n)
     print("Our received message decodes to: {}".format(string))
-   # radio.writeAckPayload(1, ackPL, len (ackPL))
-   # print("Loaded payload reply of {}".format(ackPL))
+    radio.writeAckPayload(1, ackPL, len (ackPL))
+    print("Loaded payload reply of {}".format(ackPL))
 
     f= open("logs.txt", "a+")
     f.write(now.strftime("%Y-%b-%d %H:%M")+" "+"{}".format(string)+"\n")

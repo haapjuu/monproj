@@ -44,3 +44,47 @@ void loop() {
 
 Our original servo did not work as we expected. It did not move and only made a buzzing noise.
 We changed the servo to another one, which worked, but later on we ended up using a solenoid lock. More on that later.
+
+## 1.2 Keypad
+Next up: testing out our keypad.
+Using the file keypad.ino:
+```
+
+#include <Keypad.h>
+
+const byte numRows = 4;
+const byte numCols = 4;
+
+char keymap[numRows][numCols] =
+{
+  {'1', '2', '3', 'A'},
+  {'4', '5', '6', 'B'},
+  {'7', '8', '9', 'C'},
+  {'*', '0', '#', 'D'}
+};
+
+byte rowPins[numRows] = {9, 8, 7, 6};
+byte colPins[numCols] = {5, 4, 3, 2};
+
+Keypad myKeypad = Keypad(makeKeymap(keymap), rowPins, colPins, numRows, numCols);
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  char keypressed = myKeypad.getKey();
+  if (keypressed != NO_KEY)
+  {
+    Serial.println(keypressed);
+  }
+}
+
+```
+In this example we used all 4x4 keys available on the keypad.
+Later on we realized that our Arduino Uno did not have enough DigitalPins, so we ended up using only 3x3 keys.
+This will be demonstrated later on.
+
+

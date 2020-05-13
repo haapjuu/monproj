@@ -13,6 +13,7 @@ All of our code used for testing can be found from "tests" -folder in our projec
 
 ## 1.1 Servo
 Testing that the servo works using nappimoottori.ino -file:
+
 ```
 #include <Servo.h>
 Servo myServo;
@@ -87,4 +88,68 @@ In this example we used all 4x4 keys available on the keypad.
 Later on we realized that our Arduino Uno did not have enough DigitalPins, so we ended up using only 3x3 keys.
 This will be demonstrated later on.
 
+##1.3 Keypad & Servo working together
+Moving our servo using our keypad.
+Created also our first iteration for a system using pincode to unlock the door.
+File used: keypad_servo_test.ino:
 
+```
+#include <Keypad.h>
+#include <Servo.h>
+
+Servo servo_Motor;
+const char* password = "7856";
+int position = 0;
+const byte ROWS = 4;
+const byte COLS = 4;
+char keys[ROWS][COLS] = {
+  {'1', '2', '3', 'A'},
+  {'4', '5', '6', 'B'},
+  {'7', '8', '9', 'C'},
+  {'*', '0', '#', 'D'}
+};
+
+byte rowPins[ROWS] = { 9, 8, 7, 6 };
+byte colPins[COLS] = { 5, 4, 3, 2 };
+Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
+
+void setup() {
+  Serial.begin(9600);
+  servo_Motor.attach(11);
+  setLocked(true);
+}
+void loop() {
+  char key = keypad.getKey();
+
+  if (key != NO_KEY){
+    Serial.println(key);
+  }
+
+  if (key == '*') {
+      position = 0;
+      setLocked(true);
+  }
+
+  if (key == password[position]) {
+    position ++;
+  }
+
+  if (position == 4) {
+    setLocked(false);
+  }
+  delay(100);
+}
+
+void setLocked(int locked) {
+  if (locked) {
+    servo_Motor.write(0);
+    Serial.println("Locking");
+  }
+  else {
+    servo_Motor.write(90);
+    Serial.println("Unlocking");
+  }
+}
+```
+When the user enters the code 7856 on the keypad the servo moves 90°.
+The servo turns back 90° when * is pressed on the keypad.

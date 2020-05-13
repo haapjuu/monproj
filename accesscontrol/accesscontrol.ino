@@ -32,6 +32,7 @@ void setup() {
 
   radio.begin();
   radio.setPALevel(RF24_PA_MIN);
+  radio.setDataRate(RF24_250KBPS); 
   radio.setChannel(0x74);
   radio.openWritingPipe(0xF0f0f0f0E1LL);
   radio.enableDynamicPayloads();
@@ -91,7 +92,7 @@ void setLocked(int locked) {
   else {
     digitalWrite(RelayControlPin, HIGH);
     Serial.println("Unlocking");
-    const char unlockedmessage[] = "Unlocked";
+    const char unlockedmessage[] = "1";
     radio.write(&unlockedmessage, sizeof(unlockedmessage));
   }
 }

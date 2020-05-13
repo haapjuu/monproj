@@ -13,7 +13,7 @@ radio.begin(0, 26)
 
 radio.setPayloadSize(32)
 radio.setChannel(0x74)
-radio.setDataRate(NRF24.BR_1MBPS)
+radio.setDataRate(NRF24.BR_250KBPS)
 radio.setPALevel(NRF24.PA_MIN)
 
 radio.setAutoAck(True)

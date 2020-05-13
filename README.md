@@ -153,3 +153,30 @@ void setLocked(int locked) {
 ```
 When the user enters the code 7856 on the keypad the servo moves 90°.
 The servo turns back 90° when * is pressed on the keypad.
+
+## 1.4 Installing and configuring Raspberry Pi
+Created a bootable MicroSD memorycard for Raspberry Pi 3B+ using Rufus and Raspbian Buster Lite.
+We booted up the Pi and connected it to a monitor so we could enable SSH on it using the following command:
+``
+sudo raspi-config
+``
+In raspi-config we opened option 5: Interfacing Options > P2: SSH > Yes.
+After enabling SSH on the Pi, we used the following command to create a new user:
+``
+sudo adduser konsta
+``
+and added the user to the groups "sudo" and "admin":
+``
+sudo adduser konsta sudo
+sudo adduser konsta admin
+``
+Then we locked user Pi using commands:
+``
+sudo usermod --lock Pi
+``
+We copied our SSH key to the Pi:
+``
+ssh-copy-id 192.168.1.180
+
+
+Then we disabled password log in by commenting out line "PasswordAuthentication yes"

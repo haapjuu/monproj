@@ -335,6 +335,8 @@ After we finished testing out all of the individual components we can start comb
 
 ## 2.1 Testing Servo - Keypad - Transceiver
 
+This is an early test code from when the project was still using the rotating servo as a locking mechanism. There is no logging with the code yet. 
+
 <details>
   <summary>accesscontrol.ino</summary>
   <br>

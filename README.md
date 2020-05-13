@@ -472,6 +472,28 @@ This code is ran on Raspberry and it is used to listen for the "Unlocked" messag
 
 ![logs](https://github.com/haapjuu/monproj/blob/master/tests/misc%20images/logs.png)
 
+<details>
+  <summary>index.html used to display logs</summary>
+  <br>
+  
+```
+  <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>
+      Access log
+  </title>
+</head>
+<body>
+	<?php
+		$file = file_get_contents('/home/konsta/monproj/logs.txt', true);
+	echo nl2br ($file);
+	?>
+</body>
+</html>
+```
+</details>
 
 <details>
   <summary>Final version of accesscontrol.ino</summary>

@@ -183,3 +183,11 @@ Then we disabled password log in by modifying line "PasswordAuthentication yes" 
 ``
 sudoedit /etc/ssh/sshd_config
 ``
+Enabled firewall:  
+``
+sudo apt update && sudo apt install ufw -y  
+sudo ufw allow 22/tcp  
+sudo ufw allow 80/tcp  
+sudo ufw allow 443/tcp  
+sudo ufw enable
+``

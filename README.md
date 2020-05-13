@@ -182,7 +182,7 @@ ssh-copy-id 192.168.1.180
 Then we disabled password log in by modifying line "PasswordAuthentication yes" to "PasswordAuthentication no"  
 ``
 sudoedit /etc/ssh/sshd_config
-``
+``  
 Enabled firewall:  
 
 ``
@@ -191,14 +191,18 @@ sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp  
 sudo ufw allow 443/tcp  
 sudo ufw enable  
-``
-Installed updates:  
+``  
+Installed updates:
 ``
 sudo apt upgrade -y
-``
-Installed needed packages:  
-``
+``  
+Installed needed packages:
+``  
 sudo apt install python3 apache2 php libapache2-mod-php
+``
+Modified the default homepage of Apache2:  
+``
+nano /var/www/html/index.html
 
 
 ## 1.5 Radio Transceiver Module

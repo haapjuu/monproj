@@ -102,9 +102,11 @@ This will be demonstrated later on.
 Moving the servo using our keypad.
 Created also our first iteration for a system using pincode to unlock the door.
 
-keypad_servo_test.ino:
-
-```
+<details>
+  <summary>keypad_servo_test.ino</summary>
+  <br>
+  
+  ```
 #include <Keypad.h>
 #include <Servo.h>
 
@@ -162,6 +164,8 @@ void setLocked(int locked) {
   }
 }
 ```
+</details>
+
 When the user enters the code 7856 on the keypad the servo moves 90°.
 The servo turns back 90° when * is pressed on the keypad.
 

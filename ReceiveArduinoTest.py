@@ -13,7 +13,7 @@ radio.begin(0, 26)
 
 radio.setPayloadSize(32)
 radio.setChannel(0x74)
-radio.setDataRate(NRF24.BR_1MBPS)
+radio.setDataRate(NRF24.BR_2MBPS)
 radio.setPALevel(NRF24.PA_MIN)
 
 radio.setAutoAck(True)
@@ -27,8 +27,9 @@ radio.startListening()
 now = datetime.datetime.now()
 
 while True:
+    ackPL = [1]
     while not radio.available(0):
-        time.sleep(0.01)
+        time.sleep(1/100)
 
     receivedMessage = []
     radio.read(receivedMessage, radio.getDynamicPayloadSize())
@@ -40,6 +41,9 @@ while True:
         if (n >= 32 and n <= 126):
             string += chr(n)
     print("Our received message decodes to: {}".format(string))
+   # radio.writeAckPayload(1, ackPL, len (ackPL))
+    print("Loaded payload reply of {}".format(ackPL))
+
     f= open("logs.txt", "a+")
     f.write(now.strftime("%Y-%b-%d %H:%M")+" "+"{}".format(string)+"\n")
     f.close()

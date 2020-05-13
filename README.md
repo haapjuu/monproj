@@ -100,7 +100,7 @@ This will be demonstrated later on.
 
 ## 1.3 Keypad & Servo working together
 Moving the servo using our keypad.
-Created also our first iteration for a system using pincode to unlock the door.
+Created also our first iteration for a system using PIN code to unlock the door.
 
 <details>
   <summary>keypad_servo_test.ino</summary>
@@ -465,12 +465,11 @@ while True:
 
 This code is ran on Raspberry and it is used to listen for the "Unlocked" message from Arduino. Once this message is received, it is added into 'logs.txt' with the time and date. PHP and Apache are then used to read and display the contents of the 'logs.txt' by creating a static website.
 
-
-Final version of accesscontrol.ino
-
-This code checks the input PIN-code and unlocks the solenoid lock once the correct code has been submitted. Once the lock is powered on to unlock it, an "Unlocked" message will be sent to Raspberry via the radio transceiver connected to Arduino. The lock is then automatically locked after 5 seconds by powering it down.
-
-```
+<details>
+  <summary>Final version of accesscontrol.ino</summary>
+  <br>
+  
+  ```
 #include <Keypad.h>
 #include <SPI.h>
 #include <RF24.h>
@@ -560,3 +559,9 @@ void setLocked(int locked) {
   }
 }
 ```
+</details>
+
+
+This code checks the input PIN code and unlocks the solenoid lock once the correct code has been submitted. Once the lock is powered on to unlock it, an "Unlocked" message will be sent to Raspberry via the radio transceiver connected to Arduino. The lock is then automatically locked after 5 seconds by powering it down.
+
+

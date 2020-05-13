@@ -223,22 +223,27 @@ nano /var/www/html/index.html
 
 ## 1.5 Radio Transceiver Module
 Testing the communication between Arduino and Raspberry PI using radio transceiver modules.
-Testing and actual finished project uses BLavery's Python2/3 lib_nrf24 library for NRF24L01+ Transceivers. Link to original library: https://github.com/BLavery/lib_nrf24/blob/master/lib_nrf24.py
+The testing and actual finished project uses BLavery's Python2/3 lib_nrf24 library for NRF24L01+ Transceivers.
+Link to BLavery's original lib_nrf24 library: https://github.com/BLavery/lib_nrf24/blob/master/lib_nrf24.py
 
 
 The lib_nrf24.py we used has been modified with an addional fix line below. Adding this extra line fixed our transmissions not being received by Raspberry.
 
 `self.spidev.max_speed_hz=4000000`
 
-This extra line was added into lib_nrf24.py line 373 between
+This extra line was added into lib_nrf24.py line 374.
 
 ```
 self.spidev.open(0, csn_pin)
+self.spidev.max_speed_hz=4000000
 self.ce_pin = ce_pin
 ```
 
-
-radio.ino code that was used to test sending data over to Raspberry.
+Code that was used to test sending data over to Raspberry.
+<details>
+  <summary>radio.ino</summary>
+  <br>
+  
 ```
 #include <SPI.h>
 #include <nRF24L01.h>
@@ -266,8 +271,14 @@ void loop(void){
   delay(1000);
 }
 ```
+</details>
 
-ReceiveArduino.py code that was used to test receiving data from Arduino.
+Early code that was used to test receiving data from Arduino.
+
+<details>
+  <summary>ReceiveArduino.py</summary>
+  <br>
+  
 ```
 import RPi.GPIO as GPIO
 from lib_nrf24 import NRF24
@@ -310,6 +321,8 @@ while(1):
             string += chr(n)
     print("Out received message decodes to: {}".format(string))
 ```
+</details>
+
 
 # 2. Configuring Complete System
 After we finished testing out all of the individual components we can start combining them and the code used to test them.

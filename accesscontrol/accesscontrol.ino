@@ -47,17 +47,17 @@ void loop() {
     if (key != NO_KEY) {
     Serial.println(key);
   }
-  
-  
+
+
   while (i < 4) {
   char key = keypad.getKey();
   if (key != NO_KEY){
-    
+
     Serial.println(key);
     tempPassword += key;
     i++;
 
-    if(tempPassword.startsWith("1",0)){ 
+    if(tempPassword.startsWith("1",0)){
       } else if (tempPassword.startsWith("2",1)){
        } else if (tempPassword.startsWith("3",2)){
          } else if (tempPassword.startsWith("4",3)){

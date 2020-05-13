@@ -12,9 +12,13 @@ The first goal for our project was to test each individual component to see that
 All of our code used for testing can be found from "tests" -folder in our project.
 
 ## 1.1 Servo
-Testing that the servo works using nappimoottori.ino -file:
+Testing the servo using a simple button switch connected to the Arduino breadboard.
 
-```
+<details>
+  <summary>nappimoottori.ino</summary>
+  <br>
+  
+  ```
 #include <Servo.h>
 Servo myServo;
 int angle;
@@ -29,19 +33,19 @@ void setup() {
 
 void loop() {
   switchState = digitalRead(switchPin);
-
   if (switchState == HIGH) {
     angle = 0;
   } else {
     angle = 180;
-
-
   }
   myServo.write(angle);
   delay(15);
-
 }
 ````
+</details>
+
+
+
 
 Our original servo did not work as we expected. It did not move and only made a buzzing noise.
 We changed the servo to another one, which worked, but later on we ended up using a solenoid lock. More on that later.
@@ -90,9 +94,10 @@ Later on we realized that our Arduino Uno did not have enough DigitalPins, so we
 This will be demonstrated later on.
 
 ## 1.3 Keypad & Servo working together
-Moving our servo using our keypad.
+Moving the servo using our keypad.
 Created also our first iteration for a system using pincode to unlock the door.
-File used: keypad_servo_test.ino:
+
+keypad_servo_test.ino:
 
 ```
 #include <Keypad.h>

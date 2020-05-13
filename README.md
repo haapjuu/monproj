@@ -465,6 +465,9 @@ while True:
 
 This code is ran on Raspberry and it is used to listen for the "Unlocked" message from Arduino. Once this message is received, it is added into 'logs.txt' with the time and date. PHP and Apache are then used to read and display the contents of the 'logs.txt' by creating a static website.
 
+![logs](https://github.com/haapjuu/monproj/blob/master/tests/misc%20images/logs.png)
+
+
 <details>
   <summary>Final version of accesscontrol.ino</summary>
   <br>

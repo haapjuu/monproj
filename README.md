@@ -334,6 +334,10 @@ After we finished testing out all of the individual components we can start comb
 
 ## 2.1 Testing Servo - Keypad - Transceiver
 
+<details>
+  <summary>accesscontrol.ino</summary>
+  <br>
+  
 ```
 #include <Servo.h>
 #include <Keypad.h>
@@ -410,6 +414,8 @@ void setLocked(int locked) {
   }
 }
 ```
+</details>
+
 ## 2.2 Solenoid - Keypad - Transceiver - Logging
 <details>
 <summary>Our final, modified version of ReceiveArduino.py</summary>

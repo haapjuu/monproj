@@ -199,7 +199,7 @@ sudo apt upgrade -y
 Installed needed packages:
 ``  
 sudo apt install python3 apache2 php libapache2-mod-php
-``
+``  
 Modified the default homepage of Apache2:  
 ``
 nano /var/www/html/index.html

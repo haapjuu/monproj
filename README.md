@@ -184,13 +184,22 @@ Then we disabled password log in by modifying line "PasswordAuthentication yes" 
 sudoedit /etc/ssh/sshd_config
 ``
 Enabled firewall:  
+
 ``
 sudo apt update && sudo apt install ufw -y  
 sudo ufw allow 22/tcp  
 sudo ufw allow 80/tcp  
 sudo ufw allow 443/tcp  
-sudo ufw enable
+sudo ufw enable  
 ``
+Installed updates:  
+``
+sudo apt upgrade -y
+``
+Installed needed packages:  
+``
+sudo apt install python3 apache2 php libapache2-mod-php
+
 
 ## 1.5 Radio Transceiver Module
 Testing the communication between Arduino and Raspberry PI using radio transceiver modules.

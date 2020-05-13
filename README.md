@@ -171,6 +171,8 @@ void setLocked(int locked) {
 When the user enters the code 7856 on the keypad the servo moves 90°.
 The servo turns back 90° when * is pressed on the keypad.
 
+![schematic3](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/keypad_servo_test/schematic.png)
+
 ## 1.4 Installing and configuring Raspberry Pi
 Created a bootable MicroSD memorycard for Raspberry Pi 3B+ using Rufus and Raspbian Buster Lite.
 We booted up the Pi and connected it to a monitor so we could enable SSH on it using the following command:  

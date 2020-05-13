@@ -1,13 +1,11 @@
 Logs from the radio will be saved here:
 
-2020-May-06 18:53 Unlocked
-2020-May-06 18:53 Unlocked
-2020-May-06 20:23 Unlocked
-2020-May-06 20:27 Unlocked
-2020-May-06 20:34 Unlocked
-2020-May-06 20:35 Unlocked
-2020-May-06 20:40 Unlocked
-2020-May-06 20:40 Unlocked
-2020-May-06 20:40 Unlocked
-2020-May-06 20:41 Unlocked
-2020-May-06 20:42 Unlocked
+
+2020-May-10 10:51 Unlocked
+2020-May-12 19:06 Unlocked
+2020-May-12 19:06 Unlocked
+2020-May-12 19:07 Unlocked
+2020-May-12 19:07 Unlocked
+2020-May-12 19:07 Unlocked
+2020-May-12 21:35 Unlocked
+2020-May-12 22:51 Unlocked

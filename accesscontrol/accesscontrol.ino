@@ -92,7 +92,7 @@ void setLocked(int locked) {
   else {
     digitalWrite(RelayControlPin, HIGH);
     Serial.println("Unlocking");
-    const char unlockedmessage[] = "1";
+    const char unlockedmessage[] = "Unlocked";
     radio.write(&unlockedmessage, sizeof(unlockedmessage));
   }
 }

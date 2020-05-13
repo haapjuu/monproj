@@ -224,6 +224,7 @@ nano /var/www/html/index.html
 ## 1.5 Radio Transceiver Module
 Testing the communication between Arduino and Raspberry PI using radio transceiver modules.
 The testing and actual finished project uses BLavery's Python2/3 lib_nrf24 library for NRF24L01+ Transceivers.
+<br>
 Link to BLavery's original lib_nrf24 library: https://github.com/BLavery/lib_nrf24/blob/master/lib_nrf24.py
 
 

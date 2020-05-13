@@ -94,9 +94,10 @@ void loop()
 </details>
 
 
-In this example we used all 4x4 keys available on the keypad.
+In this example we used all keys available on the keypad.
 Later on we realized that our Arduino Uno did not have enough DigitalPins, so we ended up using only 3x3 keys.
 This will be demonstrated later on.
+Please note that we could not find a proper part for our schematic. We had to use a 3x4 keypad in the schematic instead of a 4x4. The wirings are still representative of the actual project.
 
 ![schematic2](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/keypad/schematic.png)
 

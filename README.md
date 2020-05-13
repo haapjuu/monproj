@@ -45,6 +45,7 @@ void loop() {
 
 Our original servo did not work as we expected. It did not move and only made a buzzing noise.
 We changed the servo to another one, which worked, but later on we ended up using a solenoid lock. More on that later.
+![schematic](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/nappimoottori/schematic.png)
 
 ## 1.2 Keypad
 Next up: testing out our keypad.

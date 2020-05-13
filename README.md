@@ -297,8 +297,7 @@ while(1):
 ```
 
 # 2. Configuring Complete System
-
-
+After we finished testing out all of the individual components we can start combining them and the code used to test them.
 
 ## 2.1 Testing Servo - Keypad - Transceiver
 

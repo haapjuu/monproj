@@ -612,6 +612,8 @@ void setLocked(int locked) {
 This code checks the input PIN code and unlocks the solenoid lock once the correct code has been submitted. If the PIN code input is wrong, the code is "reset" and the PIN code input buffer is cleared. Once the lock is powered on to unlock it, an "Unlocked" message will be sent to Raspberry via the radio transceiver connected to Arduino. The lock is then automatically locked after 5 seconds by powering it down.
 
 Here is the schematic of the final product.
-We did not have a picture of a 12v battery pack for the schematic, so the picture has a 9v battery pack.
+We did not have a picture of a 12v battery pack for the schematic, so the picture has a 9v battery pack instead.
 ![final_schematic](https://github.com/haapjuu/monproj/blob/master/tests/misc%20images/final_schematic.png)
+
+[Here is a video demonstrating the finished project](https://youtu.be/wh_gBLo7SyA)
 

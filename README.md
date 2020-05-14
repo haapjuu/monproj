@@ -12,7 +12,7 @@ The goal of this project was to create a simple access control system between Ar
 
 # 1. Testing components
 The first goal for our project was to test each individual component to see that they work and to get basic knowledge on how to use them.
-All of our code used for testing can be found from "tests" -folder in our project.
+All of our code used for testing can be found from "tests" -folder in our project and by pressing the small triangles in this documentation.
 
 ## 1.1 Servo
 Testing the servo using a simple button switch connected to the Arduino breadboard.

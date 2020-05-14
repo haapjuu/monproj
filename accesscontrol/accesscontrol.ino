@@ -74,10 +74,7 @@ void loop() {
   } else {
     goto A;
   }
-  if (i == 4 && Password != tempPassword){
-    goto A;
-    Serial.println("Incorrect code, resetting");
-  }
+  
 
 
 

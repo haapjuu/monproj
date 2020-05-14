@@ -227,7 +227,7 @@ Modified the default homepage of Apache2:
 ``
 nano /var/www/html/index.html
 ``
-Allowed users to run PHP in index.html by commenting out necessary lines in /etc/apache2/mods-available/php7.0.conf:  
+Allowed running PHP in user directories by commenting out necessary lines in /etc/apache2/mods-available/php7.0.conf:  
 ![php](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/misc%20images/php.png)
 
 ## 1.5 Radio Transceiver Module

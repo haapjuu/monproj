@@ -232,7 +232,8 @@ nano /var/www/html/index.html
 ## 1.5 Radio Transceiver Module
 Testing the communication between Arduino and Raspberry PI using radio transceiver modules.
 The testing and actual finished project uses BLavery's Python2/3 lib_nrf24 library for NRF24L01+ Transceivers.
-<br>
+
+
 Link to BLavery's original lib_nrf24 library: https://github.com/BLavery/lib_nrf24/blob/master/lib_nrf24.py
 
 
@@ -286,8 +287,7 @@ void loop(void){
 ![schematic](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/misc%20images/schematic.png)
 
 
-Early code that was used to test receiving data from Arduino.
-
+Early code that was used to test receiving data from Arduino. 
 <details>
   <summary>ReceiveArduino.py</summary>
   <br>
@@ -336,6 +336,7 @@ while(1):
 ```
 </details>
 
+During testing we were having some issues with some messages not being received by Raspberry. We later found out that by lowering the radio transceiver datarate with ``radio.setDataRate(RF24_250KBPS);`` to 250KBPS got us to 100% success rate on sending messages to Raspberry for logging.
 
 # 2. Configuring Complete System
 After we finished testing out all of the individual components we can start combining them and the code used to test them.
@@ -610,4 +611,9 @@ void setLocked(int locked) {
 
 This code checks the input PIN code and unlocks the solenoid lock once the correct code has been submitted. If the PIN code input is wrong, the code is "reset" and the PIN code input buffer is cleared. Once the lock is powered on to unlock it, an "Unlocked" message will be sent to Raspberry via the radio transceiver connected to Arduino. The lock is then automatically locked after 5 seconds by powering it down.
 
+Here is the schematic of the final product.
+We did not have a picture of a 12v battery pack for the schematic, so the picture has a 9v battery pack instead.
+![final_schematic](https://github.com/haapjuu/monproj/blob/master/tests/misc%20images/final_schematic.png)
+
+[Here is a video demonstrating the finished project](https://youtu.be/wh_gBLo7SyA)
 

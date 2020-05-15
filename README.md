@@ -12,7 +12,7 @@ The goal of this project was to create a simple access control system between Ar
 
 # 1. Testing components
 The first goal for our project was to test each individual component to see that they work and to get basic knowledge on how to use them.
-All of our code used for testing can be found from "tests" -folder in our project.
+All of our code used for testing can be found from "tests" -folder in our project and by pressing the small triangles in this documentation.
 
 ## 1.1 Servo
 Testing the servo using a simple button switch connected to the Arduino breadboard.
@@ -227,7 +227,8 @@ Modified the default homepage of Apache2:
 ``
 nano /var/www/html/index.html
 ``
-
+Allowed running PHP in user directories by commenting out necessary lines in /etc/apache2/mods-available/php7.0.conf:  
+![php](https://raw.githubusercontent.com/haapjuu/monproj/master/tests/misc%20images/php.png)
 
 ## 1.5 Radio Transceiver Module
 Testing the communication between Arduino and Raspberry PI using radio transceiver modules.
@@ -336,7 +337,7 @@ while(1):
 ```
 </details>
 
-During testing we were having some issues with some messages not being received by Raspberry. We later found out that by lowering the radio transceiver datarate with ``radio.setDataRate(RF24_250KBPS);`` to 250KBPS got us to 100% success rate on sending messages to Raspberry for logging.
+During testing we were having some issues with some messages not being received by Raspberry. We later found out that by lowering the radio transceiver datarate with ``radio.setDataRate(RF24_250KBPS);`` to 250KBPS got us a much better success rate in sending the data.
 
 # 2. Configuring Complete System
 After we finished testing out all of the individual components we can start combining them and the code used to test them.

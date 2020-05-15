@@ -337,7 +337,7 @@ while(1):
 ```
 </details>
 
-During testing we were having some issues with some messages not being received by Raspberry. We later found out that by lowering the radio transceiver datarate with ``radio.setDataRate(RF24_250KBPS);`` to 250KBPS got us to 100% success rate on sending messages to Raspberry for logging.
+During testing we were having some issues with some messages not being received by Raspberry. We later found out that by lowering the radio transceiver datarate with ``radio.setDataRate(RF24_250KBPS);`` to 250KBPS got us a much better success rate in sending the data.
 
 # 2. Configuring Complete System
 After we finished testing out all of the individual components we can start combining them and the code used to test them.
